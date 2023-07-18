@@ -12,7 +12,7 @@ using OSBackend.Persistence.Contexts;
 namespace OSBackend.Persistence.Migrations
 {
     [DbContext(typeof(OsBackendDbContext))]
-    [Migration("20230717131400_mig_1")]
+    [Migration("20230718082056_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
