@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OSBackend.Domain.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace OSBackend.Domain.Entities
 {
-    public class Course
+    public class Course : BaseEntity
     {
-        public Guid Id { get; set; }
         public string course_name { get; set; }
         public string duration { get; set; }
         public string field { get; set; }

@@ -12,8 +12,8 @@ using OSBackend.Persistence.Contexts;
 namespace OSBackend.Persistence.Migrations
 {
     [DbContext(typeof(OsBackendDbContext))]
-    [Migration("20230718082056_mig_1")]
-    partial class mig_1
+    [Migration("20230720142832_mig_2")]
+    partial class mig_2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
