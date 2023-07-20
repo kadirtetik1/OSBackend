@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OSBackend.Application.Repository.StudentRepository;
+using OSBackend.Domain.Entities;
+using System.Net.Http.Headers;
 
 namespace OSBackend.API.Controller
 {
@@ -19,16 +21,16 @@ namespace OSBackend.API.Controller
         }
 
         [HttpGet]
-        public async void Get()
+        public async Task Get() 
         {
             await _studentWriteRepository.AddRangeAsync(new()
             {
                 new()
-                { Id=Guid.NewGuid(), first_name="kadir", last_name="tetik", age=25, address="Ankara", department="MECE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
+                { Id=Guid.NewGuid(), first_name="mehmet", last_name="şahin", age=25, address="Ankara", department="MECE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
                  user_name="kadir.tetik", password="1234", phone_number=03438483, profile_picture="www.dsad.com"
                 },
                 new()
-                { Id=Guid.NewGuid(), first_name="ahmet", last_name="yılmaz", age=25, address="Ankara", department="EE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
+                { Id=Guid.NewGuid(), first_name="oğuz", last_name="yılmaz", age=25, address="Ankara", department="EE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
                  user_name="ahmet.yilmaz", password="1234", phone_number=03438483, profile_picture="www.dsad.com"
                 },
 
@@ -37,6 +39,14 @@ namespace OSBackend.API.Controller
             await _studentWriteRepository.SaveAsync();
 
 
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> Get(string id)
+        {
+            Student student = await _studentReadRepository.GetByIdAsync(id);
+            return Ok(student);
         }
     }
 }

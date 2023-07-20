@@ -22,17 +22,17 @@ namespace OSBackend.Persistence
         public static void AddPersistenceServices(this IServiceCollection services)
         {
 
-            services.AddDbContext<OsBackendDbContext>(options => options.UseNpgsql(Configurations.ConnectionString), ServiceLifetime.Singleton);
+            services.AddDbContext<OsBackendDbContext>(options => options.UseNpgsql(Configurations.ConnectionString));
 
 
-            services.AddSingleton<IStudentReadRepository, StudentReadRepository>();
-            services.AddSingleton<IStudentWriteRepository, StudentWriteRepository>();
-
-            services.AddSingleton<ITeacherReadRepository, TeacherReadRepository>();
-            services.AddSingleton<ITeacherWriteRepository, TeacherWriteRepository>();
-
-            services.AddSingleton<ICourseReadRepository, CourseReadRepository>();
-            services.AddSingleton<ICourseWriteRepository, CourseWriteRepository>();
+            services.AddScoped<IStudentReadRepository, StudentReadRepository>();
+            services.AddScoped<IStudentWriteRepository, StudentWriteRepository>();
+                     
+            services.AddScoped<ITeacherReadRepository, TeacherReadRepository>();
+            services.AddScoped<ITeacherWriteRepository, TeacherWriteRepository>();
+                     
+            services.AddScoped<ICourseReadRepository, CourseReadRepository>();
+            services.AddScoped<ICourseWriteRepository, CourseWriteRepository>();
 
 
 
