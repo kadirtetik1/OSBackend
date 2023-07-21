@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OSBackend.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_2 : Migration
+    public partial class mig_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,16 +18,17 @@ namespace OSBackend.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     department = table.Column<string>(type: "text", nullable: false),
                     grade_year = table.Column<int>(type: "integer", nullable: false),
+                    academic_role = table.Column<string>(type: "text", nullable: false),
                     first_name = table.Column<string>(type: "text", nullable: false),
                     last_name = table.Column<string>(type: "text", nullable: false),
+                    e_mail = table.Column<string>(type: "text", nullable: false),
+                    user_name = table.Column<string>(type: "text", nullable: false),
+                    password = table.Column<string>(type: "text", nullable: false),
                     age = table.Column<int>(type: "integer", nullable: false),
                     gender = table.Column<string>(type: "text", nullable: false),
                     address = table.Column<string>(type: "text", nullable: false),
-                    e_mail = table.Column<string>(type: "text", nullable: false),
                     phone_number = table.Column<long>(type: "bigint", nullable: false),
-                    profile_picture = table.Column<string>(type: "text", nullable: false),
-                    user_name = table.Column<string>(type: "text", nullable: false),
-                    password = table.Column<string>(type: "text", nullable: false)
+                    profile_picture = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,16 +41,17 @@ namespace OSBackend.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     ProfessionArea = table.Column<string>(type: "text", nullable: false),
+                    academic_role = table.Column<string>(type: "text", nullable: false),
                     first_name = table.Column<string>(type: "text", nullable: false),
                     last_name = table.Column<string>(type: "text", nullable: false),
+                    e_mail = table.Column<string>(type: "text", nullable: false),
+                    user_name = table.Column<string>(type: "text", nullable: false),
+                    password = table.Column<string>(type: "text", nullable: false),
                     age = table.Column<int>(type: "integer", nullable: false),
                     gender = table.Column<string>(type: "text", nullable: false),
                     address = table.Column<string>(type: "text", nullable: false),
-                    e_mail = table.Column<string>(type: "text", nullable: false),
                     phone_number = table.Column<long>(type: "bigint", nullable: false),
-                    profile_picture = table.Column<string>(type: "text", nullable: false),
-                    user_name = table.Column<string>(type: "text", nullable: false),
-                    password = table.Column<string>(type: "text", nullable: false)
+                    profile_picture = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

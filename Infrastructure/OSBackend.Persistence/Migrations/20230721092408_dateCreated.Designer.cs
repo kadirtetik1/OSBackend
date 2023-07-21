@@ -12,8 +12,8 @@ using OSBackend.Persistence.Contexts;
 namespace OSBackend.Persistence.Migrations
 {
     [DbContext(typeof(OsBackendDbContext))]
-    [Migration("20230720142832_mig_2")]
-    partial class mig_2
+    [Migration("20230721092408_dateCreated")]
+    partial class dateCreated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,9 @@ namespace OSBackend.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("created_time")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("duration")
                         .IsRequired()
                         .HasColumnType("text");
@@ -81,12 +84,19 @@ namespace OSBackend.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("academic_role")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("address")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("age")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("created_time")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("department")
                         .IsRequired()
@@ -141,12 +151,19 @@ namespace OSBackend.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("academic_role")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("address")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("age")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("created_time")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("e_mail")
                         .IsRequired()

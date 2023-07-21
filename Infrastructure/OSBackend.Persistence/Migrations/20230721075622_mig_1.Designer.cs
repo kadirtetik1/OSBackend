@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OSBackend.Persistence.Contexts;
@@ -11,9 +12,11 @@ using OSBackend.Persistence.Contexts;
 namespace OSBackend.Persistence.Migrations
 {
     [DbContext(typeof(OsBackendDbContext))]
-    partial class OsBackendDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230721075622_mig_1")]
+    partial class mig_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +57,6 @@ namespace OSBackend.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("created_time")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("duration")
                         .IsRequired()
                         .HasColumnType("text");
@@ -91,9 +91,6 @@ namespace OSBackend.Persistence.Migrations
 
                     b.Property<int>("age")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("created_time")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("department")
                         .IsRequired()
@@ -158,9 +155,6 @@ namespace OSBackend.Persistence.Migrations
 
                     b.Property<int>("age")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("created_time")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("e_mail")
                         .IsRequired()

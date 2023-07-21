@@ -9,6 +9,7 @@ namespace OSBackend.Domain.Entities.Common
     public class BaseEntity
     {
         public Guid Id { get; set; }
+        public DateTime created_time { get; set; }
         
     }
 }

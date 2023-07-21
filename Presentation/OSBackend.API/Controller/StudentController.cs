@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using OSBackend.Application.Repository.StudentRepository;
 using OSBackend.Domain.Entities;
+using OSBackend.Domain.Entities.Common;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace OSBackend.API.Controller
 {
@@ -14,39 +17,30 @@ namespace OSBackend.API.Controller
         readonly private IStudentWriteRepository _studentWriteRepository;
         readonly private IStudentReadRepository _studentReadRepository;
 
-        public StudentController(IStudentWriteRepository studentWriteRepository, IStudentReadRepository studentReadRepository)
+        
+
+        public StudentController(
+            IStudentWriteRepository studentWriteRepository, 
+            IStudentReadRepository studentReadRepository)
         {
             _studentWriteRepository = studentWriteRepository;
             _studentReadRepository = studentReadRepository;
         }
 
         [HttpGet]
-        public async Task Get() 
+        public async Task<IActionResult> Get()  //Get fonksiyonun adı değiştirilebilir.
         {
-            await _studentWriteRepository.AddRangeAsync(new()
-            {
-                new()
-                { Id=Guid.NewGuid(), first_name="mehmet", last_name="şahin", age=25, address="Ankara", department="MECE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
-                 user_name="kadir.tetik", password="1234", phone_number=03438483, profile_picture="www.dsad.com"
-                },
-                new()
-                { Id=Guid.NewGuid(), first_name="oğuz", last_name="yılmaz", age=25, address="Ankara", department="EE",  e_mail="tetik.kadir@hotmail.com", gender="M", grade_year=2021,
-                 user_name="ahmet.yilmaz", password="1234", phone_number=03438483, profile_picture="www.dsad.com"
-                },
-
-            });
-
-            await _studentWriteRepository.SaveAsync();
-
+            return Ok(_studentReadRepository.GetAll());   //Bu fonksiyon ile Get()'e atılan istek ile studentRead'de ne kadar student varsa getAll ile hepsini clienta döndürüyor.
 
         }
 
-        [HttpGet("{id}")]
+        [HttpPost]
 
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Post()   //Clienttan dönen veriler Entity ile karşılanmaz. ViewModella karşılanabilir, CQRS patternda request nesneleri vs ile karşılabilir. **Bu projede ViewModel ile karşılanacak.
         {
-            Student student = await _studentReadRepository.GetByIdAsync(id);
-            return Ok(student);
+            return Ok();
         }
+
+       
     }
 }
