@@ -14,4 +14,8 @@
     <ProjectReference Include="..\OSBackend.Domain\OSBackend.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Courses\" />
+  </ItemGroup>
+
 </Project>  

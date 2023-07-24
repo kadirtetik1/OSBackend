@@ -15,21 +15,21 @@ namespace OSBackend.Persistence.Migrations
                 name: "created_time",
                 table: "Teachers",
                 type: "timestamp with time zone",
-                nullable: false,
+                nullable: true,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "created_time",
                 table: "Students",
                 type: "timestamp with time zone",
-                nullable: false,
+                nullable: true,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "created_time",
                 table: "Courses",
                 type: "timestamp with time zone",
-                nullable: false,
+                nullable: true,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
         }
 

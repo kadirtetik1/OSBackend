@@ -16,19 +16,19 @@ namespace OSBackend.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    department = table.Column<string>(type: "text", nullable: false),
-                    grade_year = table.Column<int>(type: "integer", nullable: false),
+                    department = table.Column<string>(type: "text", nullable: true),
+                    grade_year = table.Column<int>(type: "integer", nullable: true),
                     academic_role = table.Column<string>(type: "text", nullable: false),
                     first_name = table.Column<string>(type: "text", nullable: false),
                     last_name = table.Column<string>(type: "text", nullable: false),
                     e_mail = table.Column<string>(type: "text", nullable: false),
                     user_name = table.Column<string>(type: "text", nullable: false),
                     password = table.Column<string>(type: "text", nullable: false),
-                    age = table.Column<int>(type: "integer", nullable: false),
-                    gender = table.Column<string>(type: "text", nullable: false),
-                    address = table.Column<string>(type: "text", nullable: false),
-                    phone_number = table.Column<long>(type: "bigint", nullable: false),
-                    profile_picture = table.Column<string>(type: "text", nullable: false)
+                    age = table.Column<int>(type: "integer", nullable: true),
+                    gender = table.Column<string>(type: "text", nullable: true),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    phone_number = table.Column<long>(type: "bigint", nullable: true),
+                    profile_picture = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,18 +40,18 @@ namespace OSBackend.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProfessionArea = table.Column<string>(type: "text", nullable: false),
+                    ProfessionArea = table.Column<string>(type: "text", nullable: true),
                     academic_role = table.Column<string>(type: "text", nullable: false),
                     first_name = table.Column<string>(type: "text", nullable: false),
                     last_name = table.Column<string>(type: "text", nullable: false),
                     e_mail = table.Column<string>(type: "text", nullable: false),
                     user_name = table.Column<string>(type: "text", nullable: false),
                     password = table.Column<string>(type: "text", nullable: false),
-                    age = table.Column<int>(type: "integer", nullable: false),
-                    gender = table.Column<string>(type: "text", nullable: false),
-                    address = table.Column<string>(type: "text", nullable: false),
-                    phone_number = table.Column<long>(type: "bigint", nullable: false),
-                    profile_picture = table.Column<string>(type: "text", nullable: false)
+                    age = table.Column<int>(type: "integer", nullable: true),
+                    gender = table.Column<string>(type: "text", nullable: true),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    phone_number = table.Column<long>(type: "bigint", nullable: true),
+                    profile_picture = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
