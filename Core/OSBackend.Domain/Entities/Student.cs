@@ -14,5 +14,9 @@ namespace OSBackend.Domain.Entities
 
         public ICollection<Course> Courses { get; set;}
 
+        public static implicit operator Student(List<Student> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

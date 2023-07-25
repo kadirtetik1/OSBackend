@@ -16,6 +16,5 @@ namespace OSBackend.Application.Repository
         Task<T> GetByIdAsync(string id, bool tracking = true);
 
 
-
     }
 }
