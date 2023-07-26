@@ -96,7 +96,7 @@ namespace OSBackend.API.Controller
         public async Task<ActionResult<string>> userControl(VM_Control_Teacher model)
         {
 
-            string success = "Giriş Başarılı";
+            string success = "true";
             string error = "";
 
 
