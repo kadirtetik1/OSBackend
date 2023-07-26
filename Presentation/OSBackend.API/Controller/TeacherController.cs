@@ -52,6 +52,7 @@ namespace OSBackend.API.Controller
         {
             string same_username = "Bu kullanıcı adı daha önce alınmış. Başka bir kullanıcı adı seçiniz.";
             string same_mail = "Bu mail adresiyle kayıtlı bir üyelik bulunmakta. Şifrenizi mi unuttunuz ?";
+            string success = "Kayıt Başarılı!";
 
 
 
@@ -84,7 +85,7 @@ namespace OSBackend.API.Controller
 
                 await _teacherWriteRepository.SaveAsync();
 
-                return Ok("Kullanıcı Oluşturuldu!");
+                return Ok(success);
 
             }
            

@@ -50,6 +50,7 @@ namespace OSBackend.API.Controller
         {
             string same_username = "Bu kullanıcı adı daha önce alınmış. Başka bir kullanıcı adı seçiniz.";
             string same_mail = "Bu mail adresiyle kayıtlı bir üyelik bulunmakta. Şifrenizi mi unuttunuz ?";
+            string success = "Kayıt Başarılı!";
 
 
             Student checkUser = await _studentReadRepository.GetWhere(student => student.user_name.Equals(model.user_name)).FirstOrDefaultAsync();
@@ -81,7 +82,7 @@ namespace OSBackend.API.Controller
 
                 await _studentWriteRepository.SaveAsync();
 
-                return Ok("Kullanıcı Oluşturuldu!");
+                return Ok(success);
 
             }
 
