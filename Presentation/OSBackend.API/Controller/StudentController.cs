@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using OSBackend.Application.Abstractions.Token;
+using OSBackend.Application.DTOs;
 using OSBackend.Application.Repository.StudentRepository;
 using OSBackend.Application.ViewModels.Students;
 using OSBackend.Domain.Entities;
@@ -20,14 +22,18 @@ namespace OSBackend.API.Controller
         readonly private IStudentWriteRepository _studentWriteRepository;
         readonly private IStudentReadRepository _studentReadRepository;
 
+        readonly ITokenHandler _tokenHandler;  //Normalde kendisi loginuserhandler diye bir class oluşturup orada çağırıyor. Sen controllerda yaptın, hata çıkarsa geriye dön!
+
 
 
         public StudentController(
             IStudentWriteRepository studentWriteRepository,
-            IStudentReadRepository studentReadRepository)
+            IStudentReadRepository studentReadRepository,
+            ITokenHandler tokenHandler)
         {
             _studentWriteRepository = studentWriteRepository;
             _studentReadRepository = studentReadRepository;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpGet]
@@ -67,7 +73,7 @@ namespace OSBackend.API.Controller
                 return Ok(same_mail);
             }
 
-            else
+            else   //Başarılı
             {
                 await _studentWriteRepository.AddAsync(new()
                 {
@@ -95,18 +101,25 @@ namespace OSBackend.API.Controller
         {
 
             string success = "true";
-            string error = "";
+            string error = "Kullanıcı adı veya şifre hatalı!";
 
 
             Student student2 = await _studentReadRepository.GetWhere(student => student.user_name.Equals(model.user_name)).FirstOrDefaultAsync(); //username'i eşit olan varsa getir
             if (student2  == null || student2.password != model.password)
             {
-                error = "Kullanıcı adı veya şifre hatalı!";
+               
                 return Ok(error);
             }
-            
-            return Ok(success);
 
+            else  //Başarılı
+            {
+                
+
+                Token token = _tokenHandler.CreateAccessToken(30, student2.Id); // Parametre olarak " student2.Id" alsın ve fnc.da ona göre düzenle.
+
+                return Ok(token);  //success dönüyordu!
+            }
+            
 
         }
 
@@ -114,7 +127,7 @@ namespace OSBackend.API.Controller
 
         public async Task<IActionResult> Put(VM_Update_Student model)
         {
-            Student student = await _studentReadRepository.GetByIdAsync(model.Id);
+            Student student = await _studentReadRepository.GetByIdAsync(model.Id);  //studentWrite olması gerekmiyor mu ? Test et!
 
             student.first_name = model.first_name;
             student.last_name = model.last_name;
@@ -124,7 +137,7 @@ namespace OSBackend.API.Controller
             student.password = model.password;
             await _studentWriteRepository.SaveAsync();
 
-            return Ok();
+            return Ok();    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!
         }
 
 

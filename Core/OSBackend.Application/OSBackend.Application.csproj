@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstractions\Storage\" />
     <Folder Include="ViewModels\Courses\" />
   </ItemGroup>
 

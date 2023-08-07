@@ -12,7 +12,7 @@ namespace OSBackend.Domain.Entities
         public string? department { get; set; }
         public int? grade_year { get; set; }
 
-        public ICollection<Course> Courses { get; set;}
+        public ICollection<Course> Courses { get; set; }
 
         public static implicit operator Student(List<Student> v)
         {

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using OSBackend.Application.Abstractions.Token;
+using OSBackend.Application.DTOs;
 using OSBackend.Application.Repository.TeacherRepository;
 using OSBackend.Application.ViewModels.Students;
 using OSBackend.Application.ViewModels.Teachers;
@@ -22,14 +24,16 @@ namespace OSBackend.API.Controller
         readonly private ITeacherWriteRepository _teacherWriteRepository;
         readonly private ITeacherReadRepository _teacherReadRepository;
 
+        readonly ITokenHandler _tokenHandler;
 
 
         public TeacherController(
             ITeacherWriteRepository teacherWriteRepository,
-            ITeacherReadRepository teacherReadRepository)
+            ITeacherReadRepository teacherReadRepository, ITokenHandler tokenHandler)
         {
             _teacherWriteRepository = teacherWriteRepository;
             _teacherReadRepository = teacherReadRepository;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpGet]
@@ -98,17 +102,21 @@ namespace OSBackend.API.Controller
         {
 
             string success = "true";
-            string error = "";
+            string error = "Kullanıcı adı veya şifre hatalı!";
 
 
             Teacher teacher2 = await _teacherReadRepository.GetWhere(teacher => teacher.user_name.Equals(model.user_name)).FirstOrDefaultAsync(); //username'i eşit olan varsa getir
             if (teacher2 == null || teacher2.password != model.password)
             {
-                error = "Kullanıcı adı veya şifre hatalı!";
                 return Ok(error);
             }
 
-            return Ok(success);
+            else  //Başarılı
+            {
+                Token token = _tokenHandler.CreateAccessToken(30, teacher2.Id); //30 dakikalık token oluşturuldu.
+
+                return Ok(token);  //success dönüyordu!
+            }
 
 
         }

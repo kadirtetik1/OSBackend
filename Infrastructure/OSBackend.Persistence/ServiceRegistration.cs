@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿
 using Microsoft.EntityFrameworkCore;
 using OSBackend.Persistence.Contexts;
 using System;
@@ -14,6 +14,7 @@ using OSBackend.Persistence.Repository.CourseRepository;
 using OSBackend.Application.Repository.CourseRepository;
 using OSBackend.Persistence.Repository;
 using System.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace OSBackend.Persistence
 {
