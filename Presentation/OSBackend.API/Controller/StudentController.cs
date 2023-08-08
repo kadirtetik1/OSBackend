@@ -135,6 +135,9 @@ namespace OSBackend.API.Controller
             student.e_mail = model.e_mail;
             student.user_name = model.user_name;
             student.password = model.password;
+            student.phone_number = model.phone_number;
+            student.department = model.department;
+            student.gender=model.gender;
             await _studentWriteRepository.SaveAsync();
 
             return Ok();    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!

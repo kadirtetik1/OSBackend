@@ -38,7 +38,7 @@ namespace OSBackend.Infrastructure.Services.Token
                 issuer: _configuration["Token:Issuer"],
                 audience: _configuration["Token:Audience"],
                 expires: token.Expiration,
-                claims: new List<Claim> { new Claim("user id", userId.ToString()) },
+                claims: new List<Claim> { new Claim("id", userId.ToString()) },
                 notBefore: DateTime.UtcNow,
                 signingCredentials: signingCredentials
                 
