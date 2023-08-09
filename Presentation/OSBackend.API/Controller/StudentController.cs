@@ -24,8 +24,6 @@ namespace OSBackend.API.Controller
 
         readonly ITokenHandler _tokenHandler;  //Normalde kendisi loginuserhandler diye bir class oluşturup orada çağırıyor. Sen controllerda yaptın, hata çıkarsa geriye dön!
 
-
-
         public StudentController(
             IStudentWriteRepository studentWriteRepository,
             IStudentReadRepository studentReadRepository,
@@ -44,13 +42,11 @@ namespace OSBackend.API.Controller
         }
 
         [HttpGet("{id}")]
-
         public async Task<IActionResult> Get(string id)
         {
             return Ok(await _studentReadRepository.GetByIdAsync(id, false));   //Performans için trackinglere false verdik, çünkü db'ye kayıt update işlemi yapmıyor. Diğeleri default true.
         }
 
-        
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Student model)   
         {
@@ -96,7 +92,6 @@ namespace OSBackend.API.Controller
         }
 
         [HttpPost("userControl")]
-
         public async Task<ActionResult<string>> userControl(VM_Control_Student model)
         {
 
@@ -124,7 +119,6 @@ namespace OSBackend.API.Controller
         }
 
         [HttpPut]
-
         public async Task<IActionResult> Put(VM_Update_Student model)
         {
             Student student = await _studentReadRepository.GetByIdAsync(model.Id);  //studentWrite olması gerekmiyor mu ? Test et!
@@ -143,10 +137,7 @@ namespace OSBackend.API.Controller
             return Ok();    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!
         }
 
-
-
         [HttpDelete("{id}")]
-
         public async Task<IActionResult> Delete(string id)
         {
             await _studentWriteRepository.RemoveAsync(id);

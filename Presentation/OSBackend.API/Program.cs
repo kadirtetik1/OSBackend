@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000", "https://localhost:3000")
 ));
 
-builder.Services.AddAuthentication("Teacher").AddJwtBearer(options =>   // "Teacher" yerine JwtBearerDefaults.AuthenticationScheme yazýlsaydý default bir þema adý üretirdi.
+builder.Services.AddAuthentication("User").AddJwtBearer(options =>   // "Teacher" yerine JwtBearerDefaults.AuthenticationScheme yazýlsaydý default bir þema adý üretirdi.
 {
     options.TokenValidationParameters = new()
     {
