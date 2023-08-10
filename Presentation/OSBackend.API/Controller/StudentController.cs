@@ -108,9 +108,9 @@ namespace OSBackend.API.Controller
 
             else  //Başarılı
             {
-                
+                string fullname= student2.first_name + " " + student2.last_name;
 
-                Token token = _tokenHandler.CreateAccessToken(30, student2.Id); // Parametre olarak " student2.Id" alsın ve fnc.da ona göre düzenle.
+                Token token = _tokenHandler.CreateAccessToken(30, student2.Id, student2.user_name, fullname); // Parametre olarak " student2.Id" alsın ve fnc.da ona göre düzenle.
 
                 return Ok(token);  //success dönüyordu!
             }
@@ -121,6 +121,7 @@ namespace OSBackend.API.Controller
         [HttpPut]
         public async Task<IActionResult> Put(VM_Update_Student model)
         {
+            string success = "Güncellendi";
             Student student = await _studentReadRepository.GetByIdAsync(model.Id);  //studentWrite olması gerekmiyor mu ? Test et!
 
             student.first_name = model.first_name;
@@ -134,7 +135,7 @@ namespace OSBackend.API.Controller
             student.gender=model.gender;
             await _studentWriteRepository.SaveAsync();
 
-            return Ok();    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!
+            return Ok(success);    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!
         }
 
         [HttpDelete("{id}")]

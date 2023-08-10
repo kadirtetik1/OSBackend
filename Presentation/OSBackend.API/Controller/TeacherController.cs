@@ -113,7 +113,9 @@ namespace OSBackend.API.Controller
 
             else  //Başarılı
             {
-                Token token = _tokenHandler.CreateAccessToken(30, teacher2.Id); //30 dakikalık token oluşturuldu.
+                string fullname = teacher2.first_name + " " + teacher2.last_name;
+
+                Token token = _tokenHandler.CreateAccessToken(30, teacher2.Id, teacher2.user_name, fullname); //30 dakikalık token oluşturuldu.
 
                 return Ok(token);  //success dönüyordu!
             }
