@@ -1,13 +1,12 @@
-﻿using OSBackend.Domain.Entities.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OSBackend.Domain.Entities
+namespace OSBackend.Application.ViewModels.Courses
 {
-    public class Course : BaseEntity
+    public class VM_Create_Course
     {
         public string faculty { get; set; }
         public string department { get; set; }
@@ -17,10 +16,6 @@ namespace OSBackend.Domain.Entities
         public string semester { get; set; }
         public int weeklyHours { get; set; }
         public Guid TeacherId { get; set; }
-
-        public ICollection<Student> Students { get; set; }
-
-        public Teacher Teacher { get; set; }
 
     }
 }
