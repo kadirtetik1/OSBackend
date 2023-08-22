@@ -9,5 +9,6 @@ namespace OSBackend.Application.Repository.CourseRepository
 {
     public interface ICourseWriteRepository : IWriteRepository<Course>
     {
+       
     }
 }

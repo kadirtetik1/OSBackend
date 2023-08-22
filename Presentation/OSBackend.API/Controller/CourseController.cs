@@ -25,36 +25,47 @@ namespace OSBackend.API.Controller
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(_courseReadRepository.GetAll(false)); 
+            return Ok(_courseReadRepository.GetAll(false));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _courseReadRepository.GetByIdAsync(id, false));  
+            return Ok(await _courseReadRepository.GetByIdAsync(id, false));
+        }
+
+        [HttpGet("getByTeacherId")]
+        public async Task<IActionResult> Get(VM_Create_Course model)
+        {
+
+            //Course _course = await _courseReadRepository.GetWhere(course => course.TeacherId.Equals(course.TeacherId));
+
+            //await _courseReadRepository.GetByIdAsync(TeacherId.ToString, false);
+
+            return Ok();
+
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Course model)
         {
-           
+            Course course = new()
+            {
+                course_name = model.course_name,
+                course_code = model.course_code,
+                faculty = model.faculty,
+                semester = model.semester,
+                weeklyHours = model.weeklyHours,
+                department = model.department,
+                capacity = model.capacity,
+                TeacherId = model.TeacherId
 
-                await _courseWriteRepository.AddAsync(new()
-                {
-                    course_name = model.course_name,
-                    course_code = model.course_code,
-                    faculty = model.faculty,
-                    semester = model.semester,
-                    weeklyHours = model.weeklyHours,
-                    department = model.department,
-                    capacity = model.capacity,
-                    TeacherId= model.TeacherId
+            };
+            await _courseWriteRepository.AddAsync(course);
 
-                });
+            await _courseWriteRepository.SaveAsync();
 
-                await _courseWriteRepository.SaveAsync();
-
-                return Ok();
+            return Ok(course);
 
         }
 
@@ -75,7 +86,7 @@ namespace OSBackend.API.Controller
 
             await _courseWriteRepository.SaveAsync();
 
-            return Ok(success); 
+            return Ok(success);
         }
 
 

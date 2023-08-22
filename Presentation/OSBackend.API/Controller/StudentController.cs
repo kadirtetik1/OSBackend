@@ -122,7 +122,7 @@ namespace OSBackend.API.Controller
         public async Task<IActionResult> Put(VM_Update_Student model)
         {
             string success = "Güncellendi";
-            Student student = await _studentReadRepository.GetByIdAsync(model.Id);  //studentWrite olması gerekmiyor mu ? Test et!
+            Student student = await _studentReadRepository.GetByIdAsync(model.Id); 
 
             student.first_name = model.first_name;
             student.last_name = model.last_name;
@@ -135,7 +135,7 @@ namespace OSBackend.API.Controller
             student.gender=model.gender;
             await _studentWriteRepository.SaveAsync();
 
-            return Ok(success);    // success, error gönder ve frontta kaydet butonuyla bastığın güncellendi mesajı burdan dönen veriye göre bas!
+            return Ok(success);  
         }
 
         [HttpDelete("{id}")]
