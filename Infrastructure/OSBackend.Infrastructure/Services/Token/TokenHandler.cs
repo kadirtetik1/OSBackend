@@ -23,7 +23,7 @@ namespace OSBackend.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public Application.DTOs.Token CreateAccessToken(int minute, Guid userId, string user_name, string fullname)  //parametre olarak userId al, controllerdan çek, tokena at(?)...
+        public Application.DTOs.Token CreateAccessToken(int minute, Guid userId, string user_name, string fullname, string academic_role)  //parametre olarak userId al, controllerdan çek, tokena at(?)...
         {
             Application.DTOs.Token token = new();
 
@@ -38,7 +38,7 @@ namespace OSBackend.Infrastructure.Services.Token
                 issuer: _configuration["Token:Issuer"],
                 audience: _configuration["Token:Audience"],
                 expires: token.Expiration,
-                claims: new List<Claim> { new Claim("id", userId.ToString()), new Claim("username", user_name), new Claim("fullname", fullname) },
+                claims: new List<Claim> { new Claim("id", userId.ToString()), new Claim("username", user_name), new Claim("fullname", fullname), new Claim("role", academic_role) },
                 notBefore: DateTime.UtcNow,
                 signingCredentials: signingCredentials
                 

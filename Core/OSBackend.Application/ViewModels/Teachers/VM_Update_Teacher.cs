@@ -15,5 +15,8 @@ namespace OSBackend.Application.ViewModels.Teachers
         public string e_mail { get; set; }
         public string user_name { get; set; }
         public string password { get; set; }
+        public string department { get; set; }
+        public long phone_number { get; set; }
+        public string gender { get; set; }
     }
 }

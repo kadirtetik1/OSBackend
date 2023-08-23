@@ -110,7 +110,7 @@ namespace OSBackend.API.Controller
             {
                 string fullname= student2.first_name + " " + student2.last_name;
 
-                Token token = _tokenHandler.CreateAccessToken(30, student2.Id, student2.user_name, fullname); // Parametre olarak " student2.Id" alsın ve fnc.da ona göre düzenle.
+                Token token = _tokenHandler.CreateAccessToken(30, student2.Id, student2.user_name, fullname, "student"); // Parametre olarak " student2.Id" alsın ve fnc.da ona göre düzenle.
 
                 return Ok(token);  //success dönüyordu!
             }

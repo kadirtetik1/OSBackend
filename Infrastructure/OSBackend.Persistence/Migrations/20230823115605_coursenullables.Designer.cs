@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OSBackend.Persistence.Contexts;
@@ -11,9 +12,11 @@ using OSBackend.Persistence.Contexts;
 namespace OSBackend.Persistence.Migrations
 {
     [DbContext(typeof(OsBackendDbContext))]
-    partial class OsBackendDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230823115605_coursenullables")]
+    partial class coursenullables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +64,7 @@ namespace OSBackend.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string[]>("days")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("department")
@@ -68,6 +72,7 @@ namespace OSBackend.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string[]>("endHours")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<string>("faculty")
@@ -79,6 +84,7 @@ namespace OSBackend.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string[]>("startHours")
+                        .IsRequired()
                         .HasColumnType("text[]");
 
                     b.Property<int>("weeklyHours")

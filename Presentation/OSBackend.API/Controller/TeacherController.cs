@@ -115,7 +115,7 @@ namespace OSBackend.API.Controller
             {
                 string fullname = teacher2.first_name + " " + teacher2.last_name;
 
-                Token token = _tokenHandler.CreateAccessToken(30, teacher2.Id, teacher2.user_name, fullname); //30 dakikalık token oluşturuldu.
+                Token token = _tokenHandler.CreateAccessToken(30, teacher2.Id, teacher2.user_name, fullname, "teacher"); //30 dakikalık token oluşturuldu.
 
                 return Ok(token);  //success dönüyordu!
             }
@@ -129,12 +129,17 @@ namespace OSBackend.API.Controller
         {
             Teacher teacher = await _teacherReadRepository.GetByIdAsync(model.Id);
 
+
             teacher.first_name = model.first_name;
             teacher.last_name = model.last_name;
             teacher.academic_role = model.academic_role;
             teacher.e_mail = model.e_mail;
             teacher.user_name = model.user_name;
             teacher.password = model.password;
+            teacher.phone_number = model.phone_number;
+            teacher.department = model.department;
+            teacher.gender = model.gender;
+
             await _teacherWriteRepository.SaveAsync();
 
             return Ok();
