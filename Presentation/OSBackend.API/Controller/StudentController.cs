@@ -98,6 +98,8 @@ namespace OSBackend.API.Controller
             string success = "true";
             string error = "Kullanıcı adı veya şifre hatalı!";
 
+            Response.Headers.Add("Custom-Header", "Custom-Value");
+
 
             Student student2 = await _studentReadRepository.GetWhere(student => student.user_name.Equals(model.user_name)).FirstOrDefaultAsync(); //username'i eşit olan varsa getir
             if (student2  == null || student2.password != model.password)

@@ -34,17 +34,17 @@ namespace OSBackend.API.Controller
             return Ok(await _courseReadRepository.GetByIdAsync(id, false));
         }
 
-        [HttpGet("getByTeacherId")]
-        public async Task<IActionResult> Get(VM_Create_Course model)
-        {
+        //[HttpGet("getByTeacherId")]
+        //public async Task<IActionResult> Get(VM_Create_Course model)
+        //{
 
-            //Course _course = await _courseReadRepository.GetWhere(course => course.TeacherId.Equals(course.TeacherId));
+        //    //Course _course = await _courseReadRepository.GetWhere(course => course.TeacherId.Equals(course.TeacherId));
 
-            //await _courseReadRepository.GetByIdAsync(TeacherId.ToString, false);
+        //    //await _courseReadRepository.GetByIdAsync(TeacherId.ToString, false);
 
-            return Ok();
+        //    return Ok();
 
-        }
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Course model)
@@ -83,6 +83,9 @@ namespace OSBackend.API.Controller
             course.weeklyHours = model.weeklyHours;
             course.department = model.department;
             course.capacity = model.capacity;
+            course.days = model.days;
+            course.endHours = model.endHours;
+            course.startHours = model.startHours;
 
             await _courseWriteRepository.SaveAsync();
 

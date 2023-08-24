@@ -16,9 +16,9 @@ namespace OSBackend.Domain.Entities
         public int capacity { get; set; }
         public string semester { get; set; }
         public int weeklyHours { get; set; }
-        public string[]? days { get; set; }
-        public string[]? startHours { get; set; }
-        public string[]? endHours { get; set; }
+        public string? days { get; set; }
+        public string? startHours { get; set; }
+        public string? endHours { get; set; }
         public Guid TeacherId { get; set; }
         
 
