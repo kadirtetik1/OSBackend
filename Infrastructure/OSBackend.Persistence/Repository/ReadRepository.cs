@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using OSBackend.Domain.Entities.Common;
 using OSBackend.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using OSBackend.Domain.Entities;
 
 namespace OSBackend.Persistence.Repository
 {
@@ -56,9 +57,11 @@ namespace OSBackend.Persistence.Repository
             {
                 query = Table.AsNoTracking();
             }
+
             return await query.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
 
 
         }
+
     }
 }

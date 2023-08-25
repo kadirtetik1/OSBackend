@@ -9,5 +9,7 @@ namespace OSBackend.Application.Repository.CourseRepository
 {
     public interface ICourseReadRepository : IReadRepository<Course>
     {
+        Task<List<Course>> GetByIdAsyncTeacher(string TeacherId, bool tracking = true);   // Şu anda sadece 1.yi getiriyor, hepsini getirmesini sağla.
     }
+
 }

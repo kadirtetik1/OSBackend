@@ -34,17 +34,13 @@ namespace OSBackend.API.Controller
             return Ok(await _courseReadRepository.GetByIdAsync(id, false));
         }
 
-        //[HttpGet("getByTeacherId")]
-        //public async Task<IActionResult> Get(VM_Create_Course model)
-        //{
+        [HttpGet("getByTeacherId")]  // Şu anda sadece 1.yi getiriyor, hepsini getirmesini sağla.
+        public async Task<IActionResult> GetTeacher(string TeacherId)
+        {
 
-        //    //Course _course = await _courseReadRepository.GetWhere(course => course.TeacherId.Equals(course.TeacherId));
+            return Ok(await _courseReadRepository.GetByIdAsyncTeacher(TeacherId, false));
 
-        //    //await _courseReadRepository.GetByIdAsync(TeacherId.ToString, false);
-
-        //    return Ok();
-
-        //}
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Course model)
