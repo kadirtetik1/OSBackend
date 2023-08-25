@@ -34,7 +34,7 @@ namespace OSBackend.API.Controller
             return Ok(await _courseReadRepository.GetByIdAsync(id, false));
         }
 
-        [HttpGet("getByTeacherId")]  // Şu anda sadece 1.yi getiriyor, hepsini getirmesini sağla.
+        [HttpGet("getByTeacherId")]
         public async Task<IActionResult> GetTeacher(string TeacherId)
         {
 
