@@ -42,6 +42,12 @@ namespace OSBackend.API.Controller
 
         }
 
+        [HttpGet("GetWithTeacherInfo")]
+        public async Task<IActionResult> GetWithTeacherInfo()
+        {
+            return Ok(await _courseReadRepository.GetWithTeacherInfo(false));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(VM_Create_Course model)
         {
