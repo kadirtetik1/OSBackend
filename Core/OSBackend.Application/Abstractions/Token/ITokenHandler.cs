@@ -9,6 +9,6 @@ namespace OSBackend.Application.Abstractions.Token
 {
     public interface ITokenHandler
     {
-        DTOs.Token CreateAccessToken(int minutes, Guid userId, string user_name, string fullname, string academic_role);  //Token = Access Token = JWT , aynı şeylerdir
+        DTOs.Token CreateAccessToken(int minutes, Guid userId, string user_name, string fullname, string academic_role, string department);  //Token = Access Token = JWT , aynı şeylerdir
     }
 }
