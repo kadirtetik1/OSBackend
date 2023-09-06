@@ -14,7 +14,6 @@ namespace OSBackend.Persistence.Repository.CourseRepository
 
         }
 
-        //List<VM_x>  => object yerine ?
         public async Task<List<VM_Get_CoursesByFaculty>> GetWithTeacherInfo(bool tracking = true)
         {
 

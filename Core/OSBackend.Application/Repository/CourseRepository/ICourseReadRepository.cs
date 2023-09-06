@@ -12,6 +12,7 @@ namespace OSBackend.Application.Repository.CourseRepository
     {
         Task<List<Course>> GetByIdAsyncTeacher(string TeacherId, bool tracking = true);   // Şu anda sadece 1.yi getiriyor, hepsini getirmesini sağla.
         Task<List<VM_Get_CoursesByFaculty>> GetWithTeacherInfo(bool tracking = true); 
+       
     }
 
 
